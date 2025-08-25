@@ -8,9 +8,9 @@ CASCADE_PATH = cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
 face_cascade = cv2.CascadeClassifier(CASCADE_PATH)
 
 def collect_training_data():
-    X = []         # list of face images
-    y = []         # list of labels
-    label_map = {} # mapping label number -> person name
+    X = []         
+    y = []         
+    label_map = {} 
     current_label = 0
 
     if not os.path.exists(DATA_DIR):
@@ -34,7 +34,7 @@ def collect_training_data():
             if len(faces) == 0:
                 continue
 
-            x1, y1, w, h = faces[0]  # renamed to avoid shadowing the label list
+            x1, y1, w, h = faces[0]  
             face = cv2.resize(img[y1:y1+h, x1:x1+w], (200, 200))
             X.append(face)
             y.append(current_label)
@@ -49,7 +49,6 @@ def train_and_save():
         print("No training data found. Add images to known_faces/<name>/")
         return
 
-    # Create LBPH recognizer (opencv-contrib required)
     try:
         recognizer = cv2.face.LBPHFaceRecognizer_create()
     except Exception as e:

@@ -4,12 +4,10 @@ import numpy as np
 
 app = Flask(__name__)
 
-# Directories and Haar cascade
 DATA_DIR = "known_faces"
 CASCADE_PATH = cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
 face_cascade = cv2.CascadeClassifier(CASCADE_PATH)
 
-# Load recognizer if exists
 recognizer = None
 label_map = {}
 if os.path.exists("lbph_model.yml") and os.path.exists("label_map.json"):
@@ -18,14 +16,11 @@ if os.path.exists("lbph_model.yml") and os.path.exists("label_map.json"):
     with open("label_map.json", "r") as f:
         label_map = json.load(f)
 
-# -------------------- ROUTES --------------------
 
-# Redirect home to registration page
 @app.route('/')
 def home():
     return redirect(url_for('register'))
 
-# Registration page
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -47,7 +42,6 @@ def register():
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=4)
 
-            # Draw rectangles around faces
             for (x, y, w, h) in faces:
                 cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
@@ -61,27 +55,23 @@ def register():
                 cv2.imwrite(os.path.join(person_dir, f"{count}.jpg"), face_resized)
                 count += 1
                 print(f"Captured image {count}/5")
-            elif key == 27:  # ESC to cancel
+            elif key == 27:  
                 break
 
         cap.release()
         cv2.destroyAllWindows()
 
-        # After capturing, train recognizer
         from train_recognizer import train_and_save
         train_and_save()
 
-        # Redirect to live detection page
         return redirect(url_for('index'))
 
     return render_template('register.html')
 
-# Live detection page
 @app.route('/index')
 def index():
     return render_template('index.html')
 
-# Video feed for detection
 @app.route('/video_feed')
 def video_feed():
     def gen_frames():
@@ -114,7 +104,6 @@ def video_feed():
                     except Exception:
                         pass
 
-                # Draw rectangle + name + confidence
                 cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
                 cv2.putText(frame, f"{name} ({conf_percent}%)", (x, y-10),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
@@ -127,6 +116,5 @@ def video_feed():
 
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-# -------------------- RUN APP --------------------
 if __name__ == '__main__':
     app.run(debug=True)
