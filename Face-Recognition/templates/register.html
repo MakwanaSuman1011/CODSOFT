@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Register Face</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Register Your Face</h1>
+    <form method="POST">
+      <input type="text" name="name" placeholder="Enter your name" required>
+      <button type="submit">Start Capture</button>
+    </form>
+    <p class="note">
+      Press <strong>'c'</strong> on the webcam window to capture 5 images.
+      <br>
+      Make sure your face is clearly visible and well-lit.
+    </p>
+  </div>
+
+  <footer>
+    © 2025 AI Face Recognition App
+  </footer>
+</body>
+</html>

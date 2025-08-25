@@ -1,0 +1,146 @@
+/* General body styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    color: #333;
+}
+
+/* Container for content */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* Headings */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Forms */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+input[type="text"] {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 70%;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #74ebd5;
+    box-shadow: 0 0 8px #74ebd5;
+    outline: none;
+}
+
+/* Buttons */
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #74ebd5, #ACB6E5);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Video stream */
+video, img {
+    max-width: 100%;
+    border-radius: 12px;
+    border: 2px solid #74ebd5;
+    margin-top: 20px;
+}
+
+/* Footer text */
+footer {
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #555;
+    text-align: center;
+}
+
+
+/* Video section */
+.video-section {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.instructions {
+    margin-top: 20px;
+    text-align: left;
+    font-size: 1rem;
+}
+
+.instructions code {
+    background-color: #f0f0f0;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+/* Form specific */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+input[type="text"] {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 70%;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #74ebd5;
+    box-shadow: 0 0 8px #74ebd5;
+    outline: none;
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #74ebd5, #ACB6E5);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.note {
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 15px;
+}
