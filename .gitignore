@@ -1,0 +1,6 @@
+__pycache__/
+lbph_model.yml
+label_map.json
+*.pyc
+venv/
+.env
